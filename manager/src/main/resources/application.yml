@@ -1,0 +1,16 @@
+server:
+  port: 9002
+  servlet:
+    context-path: /manager
+spring:
+  application:
+    name: manager
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/financial?characterEncoding=UTF-8
+    username: root
+    password: root
+
+  jpa:
+    show-sql: true
+

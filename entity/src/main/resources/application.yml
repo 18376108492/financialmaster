@@ -1,0 +1,14 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: mytenspuare_qa
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/financial?characterEncoding=UTF-8
+    username: root
+    password: root
+
+  jpa:
+    show-sql: true
+
