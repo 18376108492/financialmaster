@@ -39,6 +39,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.imooc.jsonrpc4j</groupId>
+            <artifactId>jsonrpc4j</artifactId>
+            <version>1.5.1</version>
+        </dependency>
+
         <!--commons-lang-->
         <dependency>
             <groupId>org.apache.commons</groupId>

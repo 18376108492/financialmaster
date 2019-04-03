@@ -3,8 +3,10 @@ package com.itdan.entity.pojo;
 import io.swagger.annotations.ApiModelProperty;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -13,6 +15,7 @@ import java.util.Date;
  * 产品
  */
 @Entity
+@Table(name = "product")
 public class Product implements Serializable{
     @Id
     private String id;//产品编号
@@ -23,17 +26,25 @@ public class Product implements Serializable{
     @ApiModelProperty(value = "状态",dataType = "com.itdan.entity.enums.ProductStatus")
     private String status ;
     //起投金额
+    @Column(name = "threshold_amount")
     private BigDecimal thresholdAmount ;
     //投资步长
+    @Column(name = "step_amount")
     private BigDecimal stepAmount;
     //锁定期
+    @Column(name = "lock_term")
     private Integer lockTerm;
     //收益率，因为要与其他数相乘，所以使用BigDecimal
+    @Column(name = "reward_rate")
     private BigDecimal rewardRate;
     private String memo;
+    @Column(name = "create_at")
     private Date createAt;
+    @Column(name = "create_user")
     private Date updateAt;
+    @Column(name = "update_at")
     private String createUser;
+    @Column(name = "update_user")
     private String updateUser;
 
     public Product(){}

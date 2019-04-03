@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import javax.persistence.criteria.*;
@@ -23,8 +24,10 @@ import java.util.List;
  * 产品业务逻辑层
  */
 @Service
+@Transactional
 public class ProductService {
 
+    private static Logger logger=LoggerFactory.getLogger(ProductService.class);
 
     @Autowired
     private ProductRepository productRepository;
@@ -35,13 +38,14 @@ public class ProductService {
      * @return
      */
     public Product addProduct(Product product) {
+        logger.debug("添加产品的参数为:{}",product);
         //校验数据
         checkProduck(product);
         //设置默认数据
         setDefault(product);
         //保存数据
-        Product result = productRepository.save(product);
-        return result;
+       Product reslut=  productRepository.save(product);
+       return  reslut;
     }
 
     /**
@@ -51,7 +55,6 @@ public class ProductService {
      */
     public Product getById(String id){
         //检验ID是否为空
-        Assert.isNull(id,"需要产品编号");
         Product product=productRepository.findById(id).get();
         return product;
     }
@@ -85,10 +88,10 @@ public class ProductService {
                 if (idList!=null&&idList.size()>0){
                      predicateList.add(idCol.in(idList));
                 }
-                if(BigDecimal.ZERO.compareTo(minRewardRate)<0){
+                if(minRewardRate!= null && BigDecimal.ZERO.compareTo(minRewardRate) < 0){
                     predicateList.add(criteriaBuilder.ge(rewardRate,minRewardRate));//ge大于等于
                 }
-                if(BigDecimal.ZERO.compareTo(maxRewardRate)<0){
+                if(maxRewardRate !=null&&BigDecimal.ZERO.compareTo(maxRewardRate)<0){
                     predicateList.add(criteriaBuilder.le(rewardRate,maxRewardRate));//le小于等于
                 }
                 if (statusList!=null&&statusList.size()>0){
