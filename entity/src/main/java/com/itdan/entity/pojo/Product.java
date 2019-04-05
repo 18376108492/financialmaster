@@ -1,5 +1,6 @@
 package com.itdan.entity.pojo;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
@@ -16,6 +17,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "product")
+@ApiModel(value = "product",description = "产品模型")
 public class Product implements Serializable{
     @Id
     private String id;//产品编号

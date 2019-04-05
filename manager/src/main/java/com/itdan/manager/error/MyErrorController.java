@@ -13,16 +13,15 @@ import java.util.Map;
  * 全局异常处理类
  */
 
-public class MyErroeController extends BasicErrorController {
+public class MyErrorController extends BasicErrorController {
 
-    public MyErroeController(ErrorAttributes errorAttributes,
-                             ErrorProperties errorProperties,
-                             List<ErrorViewResolver> errorViewResolvers) {
+    public MyErrorController(ErrorAttributes errorAttributes, ErrorProperties errorProperties, List<ErrorViewResolver> errorViewResolvers) {
         super(errorAttributes, errorProperties, errorViewResolvers);
     }
 
     @Override
-    protected Map<String, Object> getErrorAttributes(HttpServletRequest request, boolean includeStackTrace) {
+    protected Map<String, Object> getErrorAttributes(HttpServletRequest request,
+                                                     boolean includeStackTrace) {
         Map<String, Object> attrs=super.getErrorAttributes(request, includeStackTrace);
         /**
          * 错误信息
@@ -38,6 +37,12 @@ public class MyErroeController extends BasicErrorController {
         attrs.remove("status");
         attrs.remove("error");
         attrs.remove("path");
+
+        String errorCode = (String) attrs.get("message");
+        ErrorEnum errorEnum = ErrorEnum.getErroeByCode(errorCode);
+        attrs.put("message",errorEnum.getMessage());
+        attrs.put("code",errorEnum.getCode());
+        attrs.put("canRetry",errorEnum.isCanRetry());
         return attrs;
     }
 }

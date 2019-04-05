@@ -2,6 +2,7 @@ package com.itdan.manager.controller;
 
 import com.itdan.entity.pojo.Product;
 import com.itdan.manager.service.ProductService;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +32,8 @@ public class ProductController {
      * 测试
      * @return
      */
-    @RequestMapping(value = "/test")
+    @ApiOperation(value = "控制层测试",notes = "测试用例")
+    @RequestMapping(value = "/test",method = RequestMethod.GET)
     @ResponseBody
     public String test(){
         return "test";
@@ -42,6 +44,7 @@ public class ProductController {
      * @param product 产品对象
      * @return
      */
+    @ApiOperation(value = "创建产品",notes = "根据对应的要求添加产品")
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public Product addProduct(@RequestBody Product product){
@@ -54,6 +57,7 @@ public class ProductController {
      * @param id 产品编号
      * @return
      */
+    @ApiOperation(value = "查询单个产品",notes = "根据传入的ID查询相应的产品")
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     @ResponseBody
     public Product getById(@PathVariable String id){
@@ -71,6 +75,7 @@ public class ProductController {
      * @param pagesize 每页显示条数
      * @return
      */
+    @ApiOperation(value = "根据条件查询出产品",notes = "根据条件查询出产品并且做分页处理")
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public Page<Product> query(String ids,

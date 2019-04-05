@@ -2,6 +2,7 @@ package com.itdan.manager.service;
 
 import com.itdan.entity.enums.ProductStatus;
 import com.itdan.entity.pojo.Product;
+import com.itdan.manager.error.ErrorEnum;
 import com.itdan.manager.repositories.ProductRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,6 +55,7 @@ public class ProductService {
      * @return
      */
     public Product getById(String id){
+        Assert.notNull(id,ErrorEnum.ID_IN_NULL.toString());
         //检验ID是否为空
         Product product=productRepository.findById(id).get();
         return product;
@@ -145,7 +147,7 @@ public class ProductService {
      * @param product 产品对象
      */
     private void checkProduck(Product product) {
-        Assert.notNull(product.getId(), "编号不可为空");
+        Assert.notNull(product.getId(), ErrorEnum.ID_IN_NULL.toString());
         //其他非空校验
         Assert.isTrue(BigDecimal.ZERO.compareTo(product.getRewardRate()) < 0 && BigDecimal.valueOf(30).compareTo(product.getRewardRate()) >= 0, "收益率范围错误");
         Assert.isTrue(BigDecimal.valueOf(product.getStepAmount().longValue()).compareTo(product.getStepAmount()) == 0, "投资步长需为整数");

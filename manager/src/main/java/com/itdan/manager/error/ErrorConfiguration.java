@@ -1,7 +1,6 @@
 package com.itdan.manager.error;
 
 import org.springframework.beans.factory.ObjectProvider;
-import org.springframework.boot.autoconfigure.web.ErrorProperties;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorViewResolver;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
@@ -17,9 +16,9 @@ import java.util.List;
 public class ErrorConfiguration {
 
     @Bean
-    public MyErroeController basicErrorController(ErrorAttributes errorAttributes, ServerProperties serverProperties,
+    public MyErrorController basicErrorController(ErrorAttributes errorAttributes, ServerProperties serverProperties,
                                                   ObjectProvider<List<ErrorViewResolver>> errorViewResolversProvider) {
-        return new MyErroeController(errorAttributes, serverProperties.getError(),
+        return new MyErrorController(errorAttributes, serverProperties.getError(),
                 errorViewResolversProvider.getIfAvailable());
     }
 
