@@ -13,6 +13,7 @@
         <module>entity</module>
         <module>manager</module>
         <module>swagger</module>
+        <module>seller</module>
     </modules>
 
 
@@ -59,6 +60,12 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.2.2</version>
+        </dependency>
+        <!--jsonrpc4j-->
+        <dependency>
+            <groupId>com.github.briandilley.jsonrpc4j</groupId>
+            <artifactId>jsonrpc4j</artifactId>
+            <version>1.5.3</version>
         </dependency>
 
 

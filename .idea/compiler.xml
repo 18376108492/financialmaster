@@ -9,6 +9,7 @@
         <module name="api" />
         <module name="entity" />
         <module name="manager" />
+        <module name="seller" />
         <module name="swagger" />
       </profile>
     </annotationProcessing>

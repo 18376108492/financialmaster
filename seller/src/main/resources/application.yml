@@ -1,0 +1,16 @@
+server:
+  port: 9003
+spring:
+  application:
+    name: seller
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/fiannical?characterEncoding=UTF-8
+    username: root
+    password: admin
+
+  jpa:
+    database: mysql
+    show-sql: true
+
+
