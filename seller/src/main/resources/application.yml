@@ -13,4 +13,4 @@ spring:
     database: mysql
     show-sql: true
 
-
+rpc.manager.url: http://localhost:9002/
