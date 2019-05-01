@@ -11,6 +11,7 @@
         <module name="manager" />
         <module name="seller" />
         <module name="swagger" />
+        <module name="utils" />
       </profile>
     </annotationProcessing>
   </component>

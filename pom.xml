@@ -14,6 +14,7 @@
         <module>manager</module>
         <module>swagger</module>
         <module>seller</module>
+        <module>utils</module>
     </modules>
 
 
@@ -40,7 +41,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
+        <!--activeMq-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-activemq</artifactId>
+        </dependency>
 
 
         <!--commons-lang-->
@@ -67,7 +72,12 @@
             <artifactId>jsonrpc4j</artifactId>
             <version>1.5.3</version>
         </dependency>
-
+       <!--rsa-->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.8</version>
+        </dependency>
 
     </dependencies>
 

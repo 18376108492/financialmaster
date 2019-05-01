@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.jms.annotation.JmsListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class ProductRpcService {
 
     private Logger logger=LoggerFactory.getLogger(ProductRpcService.class);
 
+    static  final  String MQ_DESTINATIOM ="Consumer.cache.VirtualTopic.productStatus";
     @Autowired
     private ProductRpc productRpc;
 
@@ -36,7 +38,7 @@ public class ProductRpcService {
         ProductRpcRequest productRpcRequest=new ProductRpcRequest();
         List<String> status=new ArrayList<>();
         status.add(ProductStatus.IN_SELL.name());
-        //添加分页操作
+        //添加分页操作.
         Pageable pageable=new PageRequest(0,1000,Sort.Direction.DESC,"rewardRate");
         productRpcRequest.setStatus(status);
         productRpcRequest.setPageable(pageable);
@@ -45,4 +47,15 @@ public class ProductRpcService {
         logger.info("rpc查询全部商品结果。",page);
         return page.getContent();
     }
+
+    /**
+     * 使用消息插件更新缓存
+     */
+    @JmsListener(destination ="MQ_DESTINATIOM")
+    void updateCache(){
+        //先清空缓存
+        //再更新缓存
+    }
+
+
 }

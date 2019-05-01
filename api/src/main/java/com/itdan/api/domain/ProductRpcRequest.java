@@ -3,6 +3,7 @@ package com.itdan.api.domain;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * 产品查询相应实体类
  */
 
-public class ProductRpcRequest {
+public class ProductRpcRequest implements Serializable {
 
     private List<String> ids;
     private BigDecimal minRewardRate;

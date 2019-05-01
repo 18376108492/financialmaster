@@ -13,4 +13,9 @@ spring:
     database: mysql
     show-sql: true
 
+  activemq:
+      broker-url: tcp://134.175.8.44:61616
+      packages:
+        trust-all: true
 rpc.manager.url: http://localhost:9002/
+

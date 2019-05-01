@@ -15,4 +15,7 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
-
+  activemq:
+    broker-url: tcp://134.175.8.44:61616
+    jms:
+        pub-sub-domain: true
